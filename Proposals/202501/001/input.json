@@ -1,0 +1,18 @@
+{
+  "Version": "001",
+  "Year": "2025",
+  "Semester": "Spring",
+  "project_name": "Predicting and Visualizing Vaccine Sentiment Across Demographics",
+  "Objective": " \n            I plan to investigate and predict patterns in sentiments towards COVID, flu, and RSV vaccinations. I am interested in \n            learning how different demographics and types of vaccine may affect a person\u2019s perspective and motivation to get \n            vaccinated over time. I would like to include both predictive and visualization elements in my project, such as \n            predicting the greatest motivators/concerns for vaccines in the future and highlighting patterns in the vaccination \n            motivators/concerns of certain demographics.\n            ",
+  "Dataset": "\n            This data comes from the CDC\u2019s VaxView team and is published by National Center for Immunization and Respiratory \n            Diseases, which are reliable government organizations. The Footnotes also lists other aspects of reliability such as \n            methods of limiting bias. The datatypes are all either text or numerical. \n            The dataset is sourced from this website: https://data.cdc.gov/Vaccinations/Vaccination-Concerns-Issues-and-Motivators-RespVax/94wp-9pid/about_data \n            ",
+  "Rationale": "\n            During the COVID-19 pandemic, the topic of vaccinations became highly political, likely affecting the overall impact \n            of the pandemic, suggesting that the public's motivation for getting a vaccine is crucial for maintaining the herd \n            immunity threshold and saving lives. I am interested in learning how different demographics and types of vaccine may \n            affect a person\u2019s perspective and motivation to get vaccinated over time. The results of this project could be used to \n            assist public health organization in effectively targeting vaccine messaging to increase immunization rates in the US.\n            ",
+  "Approach": "\n            I plan on approaching this capstone through several steps.  \n\n            1. Prepare data through cleaning and exploratory data analysis.\n            2. Work on the covariate features importance.  \n            3. Use covariate features to model vaccination sentiment with classical machine learning techniques.\n            4. Synthesize my findings through the creation of a professional dashboard for data visualization.\n            5. Culminate my work with a written report and poster.\n            ",
+  "Timeline": "\n            This a rough time line for this project:  \n\n            - (2 Weeks) Data Cleaning and EDA  \n            - (2 Weeks) Feature Importance \n            - (3 Weeks) Modeling  \n            - (3 Weeks) Visualization\n            - (1 Week) Writing Report  \n            - (1 Week) Creating Poster and Finalizing Presentation \n            ",
+  "Expected Number Students": "\n            This project will be done individually.  \n            ",
+  "Possible Issues": "\n            The dataset website is not very descriptive in terms of giving clear definitions of all terms. If necessary, I can \n            address this issue by contacting the team. Another challenge may rise due to the organization of the demographics \n            within the dataset.\n.\n            ",
+  "Proposed by": "Katelyn Power",
+  "Proposed by email": "kpower@gwu.edu",
+  "instructor": "Sushovan Majhi",
+  "instructor_email": "s.majhi@gwu.edu",
+  "github_repo": "https://github.com/GW-datasci/25-spring-KPower"
+}

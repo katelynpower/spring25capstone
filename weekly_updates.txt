@@ -1,0 +1,47 @@
+Katelyn Power
+
+Weekly Update 1 - 10 February 2025
+	1. Set up environment including VSCode and GitHub Repo
+	2. Generated final project proposal, which can be found in my repo here: https://github.com/GW-datasci/25-spring-KPower/blob/main/Proposals/202501/001/proposal_001.md
+	3. Started first steps of loading in, cleaning, and exploring the data in R, as seen here: https://github.com/GW-datasci/25-spring-KPower/blob/main/code/component/cleaning_eda_R.R
+Next week I plan to continue cleaning and EDA.
+
+Weekly Update 2 - 24 February 2025
+	1. Finished cleaning dataset with sorting and updating in R (same cleaning_eda file as above)
+		- Downloaded a more recent version of the dataset and reran the previous cleaning code on it to apply changes
+		- Exported my final cleaned dataframe as a CSV so I can work with it outside of R in the future
+	2. EDA - began exploring the dataset statistically with summary statistics and trying out some ANOVA tests in R (same cleaning_eda file as above)
+	3. Fixed organization for weekly update file in github
+Next week I will finish up with any last EDA and start feature importance work
+
+Weekly Update 3 - 3 March 2025
+	1. Created a new R file for creating visualizations
+		- I have decided that I want to move forward with visualizations before I do modeling, so that I can continue exploring the data
+		- This file will be used for EDA specifically with visualizations so I can determine the best visualizations to move forward with and how to cut the data for them
+	2. Started by creating two bar charts (one based on time and one based on category) and a pie chart
+		- challenge: there are many categories so it is hard to make it pretty to read, and also I have to subset the data a lot
+		- challenge: I thought that the estimates were percentages but they add up to much more than 100... need to reevaluate
+Need to be more productive next week lol. Hoping to finalize the types of visualizations I want soon so I can start doing UI!
+
+Weekly Update 4 - 17 March 2025
+	1. Started up a UI with Plotly Dash Apps
+	2. Began drafting out some visualizations based on my explorations from last week
+		- started with a simple bar chart first, and figured out how I want to adjust it next to make it more user-friendly (also need to add more dropdowns because it is misleading right now)
+		- might see what a tree map looks like next 
+		- in the future I want to remove the "other" and "nothing" sentiments
+		- in the future I want to split out the motivators/concerns into separate graphs to improve readability 
+		- not sure if i will keep the timeframe dropdown...
+	3. every other month only shows either motivators/concerns - I went back and combined these month's labels for 2 month intervals
+
+Weekly Update 5 - 24 March 2025
+	1. Fixed all of the things I talked about in point 2 from last week's update
+		- removed irrelevant sentiment categories like "other" and "nothing"
+		- split out the motivators and concerns into separate graphs
+	2. Generally fixed layout and aesthetics of bar graphs. Still have some things I will tweak in the future but good to move on to other viz now.
+
+Weekly Update 6 - 1 April 2025
+	1. Added treemap to app
+	2. Fixed minor layout/UI issues
+	3. Tried out decision tree (decision_tree.py)
+		- want to try simplifying/pruning the tree and see if there is a way to implement it into my app
+		- will try regression or another model next
