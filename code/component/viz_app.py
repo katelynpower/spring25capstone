@@ -4,7 +4,7 @@ import pandas as pd
 import dash_bootstrap_components as dbc
 import os
 
-file_path = 'os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'cleaned_vaccine_sentiment_data.csv'
+file_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'cleaned_vaccine_sentiment_data.csv')
 df= pd.read_csv(file_path)
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
