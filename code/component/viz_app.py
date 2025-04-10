@@ -54,14 +54,14 @@ app.layout = html.Div([
                         dbc.Row([treemap])
                        ], style={'padding': '10px 20px 20px 20px'})'''
 
-app.layout = html.Div([
+applic.layout = html.Div([
     dbc.Row([page_title,selects,
         dbc.Row([dbc.Col([bargraph_motivators, bargraph_concerns], width=8), dbc.Col([heatmap], width=4)], style={'height': '700px'}),
         dbc.Row([treemap])
     ])])
 
 
-@app.callback(
+@applic.callback(
     Output('bargraph_motivators', 'figure'),
     Input('vaccinedrop', 'value'),
     Input('demodrop', 'value'),
@@ -81,7 +81,7 @@ def update_graph(selected_vaccine, selected_demo, selected_month):
         margin={'b': 40, 't': 80})
     return fig
 
-@app.callback(
+@applic.callback(
     Output('bargraph_concerns', 'figure'),
     Input('vaccinedrop', 'value'),
     Input('demodrop', 'value'),
@@ -101,7 +101,7 @@ def update_graph(selected_vaccine, selected_demo, selected_month):
         margin={'b': 40, 't': 80})
     return fig
 
-@app.callback(
+@applic.callback(
     Output('heatmap', 'figure'),
     Input('vaccinedrop', 'value'),
     Input('demodrop', 'value'),
@@ -117,7 +117,7 @@ def update_graph(selected_vaccine, selected_demo, selected_month):
     fig.update_layout(title='Demographic vs. Sentiment Heatmap', xaxis_title=None, yaxis_title=None, template='plotly_white', height=600)
     return fig
 
-@app.callback(
+@applic.callback(
     Output('treemap', 'figure'),
     Input('vaccinedrop', 'value'),
     Input('demodrop', 'value'),
@@ -133,4 +133,4 @@ def update_graph(selected_vaccine, selected_demo, selected_month):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    applic.run(debug=True)
