@@ -7,8 +7,8 @@ import os
 file_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'cleaned_vaccine_sentiment_data.csv')
 df= pd.read_csv(file_path)
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-server = app.server
+applic = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = applic.server
 
 page_title = html.H2(f"Vaccination Sentiment Visualization", className="bg-secondary text-white p-2 mb-4") 
 
