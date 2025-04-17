@@ -121,6 +121,7 @@ def update_graph(selected_vaccine, selected_demo, selected_month):
         .index.tolist()
     )
     fig = px.density_heatmap(filtered_df, x='indicator_category', y='demo_category', z='estimate', category_orders={'indicator_category': x_order}, labels={'estimate':'Estimate (%)'}, color_continuous_scale=[(0, "#636EFA"), (1, "#EF553B")])
+    fig.update_traces(hovertemplate='%{x}<br>Demographic: %{y}<br>Estimate: %{z}%<extra></extra>')
     fig.update_layout(title='Demographic vs. Sentiment Heatmap', xaxis_title=None, yaxis_title=None, template='plotly_white', height=600)
     return fig
 
