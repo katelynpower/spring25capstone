@@ -10,12 +10,7 @@ df= pd.read_csv(file_path)
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 
-page_title = html.H2(f"Vaccination Sentiment Visualization", className="bg-secondary text-white p-2 mb-4") 
-
-info = dbc.Accordion([
-    dbc.AccordionItem(dcc.Markdown("info"), title="About" ),
-    dbc.AccordionItem(dcc.Markdown("info"), title="Data Source")
-],  start_collapsed=True)
+page_title = html.Div(style={"backgroundColor": "#636EFA"},children=html.H2(f"Vaccination Sentiment Visualization", className="text-white p-2 mb-0", style={"padding":"10px 20px"}))
 
 vaccine_dropdown = dcc.Dropdown(
     id='vaccinedrop',
@@ -35,30 +30,36 @@ month_dropdown = dcc.Dropdown(
     id='monthdrop',
     options=[{'label': month, 'value': month} for month in df['month_label'].unique()],
     clearable=True,
+    value='December 2024/January 2025',
     className='m-2'
 )
 
-selects = dbc.Card(dbc.CardBody([html.Div("Select Vaccine, Demographic Type, and Time Period"),vaccine_dropdown, demo_dropdown, month_dropdown], className='bg-light',), className='mb-4')
+selects = dbc.Card(dbc.CardBody([html.P("Select Vaccine, Demographic Type, and Time Period", className='mb-0'),
+                                 vaccine_dropdown, demo_dropdown, month_dropdown], className='bg-light'))
 
+cite = dbc.Card(dbc.CardBody([
+    html.P([
+        "Data Source: ",
+        html.A(
+            "Vaccination Concerns, Issues, and Motivators",
+            href="https://data.cdc.gov/Vaccinations/Vaccination-Concerns-Issues-and-Motivators-RespVax/94wp-9pid",
+            target="_blank"
+        ),
+        " provided by the National Center for Immunization and Respiratory Diseases"],
+        className='mb-0'),
+    html.P("Created by: Katelyn Power", className='mb-0')
+], className='bg-light'))
 
 bargraph_motivators = dcc.Graph(id='bargraph_motivators', style={'height': '350px'})
 bargraph_concerns = dcc.Graph(id='bargraph_concerns', style={'height': '350px'})
 treemap = dcc.Graph(id='treemap')
 heatmap = dcc.Graph(id='heatmap')
 
-'''
-app.layout = html.Div([
-                       dbc.Row([page_title,
-                           dbc.Col([selects, info], width=3),
-                           dbc.Col([dbc.Card(dbc.CardBody([bargraph_motivators, bargraph_concerns, heatmap]))], width=9)]),
-                        dbc.Row([treemap])
-                       ], style={'padding': '10px 20px 20px 20px'})'''
-
 app.layout = html.Div([
     dbc.Row([page_title,selects,
         dbc.Row([dbc.Col([bargraph_motivators, bargraph_concerns], width=8), dbc.Col([heatmap], width=4)], style={'height': '700px'}),
-        dbc.Row([treemap])
-    ])])
+        dbc.Row([treemap])]),cite]
+    )
 
 
 @app.callback(
@@ -113,7 +114,13 @@ def update_graph(selected_vaccine, selected_demo, selected_month):
     filtered_df = filtered_df[filtered_df['demo_group'] == selected_demo]
     if selected_month:
         filtered_df = filtered_df[filtered_df['month_label'] == selected_month]
-    fig = px.density_heatmap(filtered_df, x='indicator_category', y='demo_category', z='estimate',labels={'estimate':'Estimate (%)'}, color_continuous_scale=[(0, "#636EFA"), (1, "#EF553B")])
+    x_order = (
+        filtered_df.groupby('indicator_category')['estimate']
+        .mean()
+        .sort_values()
+        .index.tolist()
+    )
+    fig = px.density_heatmap(filtered_df, x='indicator_category', y='demo_category', z='estimate', category_orders={'indicator_category': x_order}, labels={'estimate':'Estimate (%)'}, color_continuous_scale=[(0, "#636EFA"), (1, "#EF553B")])
     fig.update_layout(title='Demographic vs. Sentiment Heatmap', xaxis_title=None, yaxis_title=None, template='plotly_white', height=600)
     return fig
 
