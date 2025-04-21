@@ -58,7 +58,7 @@ heatmap = dcc.Graph(id='heatmap')
 app.layout = html.Div([
     dbc.Row([page_title,selects,
         dbc.Row([dbc.Col([bargraph_motivators, bargraph_concerns], width=7), dbc.Col([heatmap], width=5)], style={'height': '700px'}),
-        dbc.Row([treemap])]),cite]
+        dbc.Row([treemap])]),cite], style={'zoom':.75}
     )
 
 
@@ -137,6 +137,7 @@ def update_graph(selected_vaccine, selected_demo, selected_month):
     fig = px.treemap(filtered_df, path=[px.Constant('Vaccine Sentiment Estimates'),'demo_group','demo_category','indicator_category','vaccine','month_label'], values='estimate',custom_data=['month_label', 'indicator_category', 'estimate'], 
                      color='dashboard_type', color_discrete_map={'motivators':'#636EFA','concerns/issues':'#EF553B'})
     fig.update_traces(root_color="lightgrey", hovertemplate="<b>%{label}</b><br>%{parent}<br>Estimate: %{value:.2f}%<extra></extra>")
+    fig.update_layout(margin={'b': 20, 't': 40, 'l': 20, 'r': 0})
     return fig
 
 
