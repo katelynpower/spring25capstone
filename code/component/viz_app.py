@@ -57,7 +57,7 @@ heatmap = dcc.Graph(id='heatmap')
 
 app.layout = html.Div([
     dbc.Row([page_title,selects,
-        dbc.Row([dbc.Col([bargraph_motivators, bargraph_concerns], width=8), dbc.Col([heatmap], width=4)], style={'height': '700px'}),
+        dbc.Row([dbc.Col([bargraph_motivators, bargraph_concerns], width=7), dbc.Col([heatmap], width=5)], style={'height': '700px'}),
         dbc.Row([treemap])]),cite]
     )
 
@@ -79,7 +79,7 @@ def update_graph(selected_vaccine, selected_demo, selected_month):
                  labels={'demo_category':'Demographic'},custom_data=['month_label'])
     fig.update_traces(hovertemplate='%{customdata[0]}<br>%{x}: %{y:.2f}%')
     fig.update_layout(title='Motivators for Vaccination', xaxis_title=None, yaxis_title='Percent', xaxis={'categoryorder':'total ascending'}, template='plotly_white',legend={'yanchor': 'top', 'y': 1.2},
-        margin={'b': 40, 't': 80})
+        margin={'b': 40, 't': 80, 'l': 40, 'r': 0})
     return fig
 
 @app.callback(
@@ -99,7 +99,7 @@ def update_graph(selected_vaccine, selected_demo, selected_month):
                  labels={'demo_category':'Demographic'},custom_data=['month_label'])
     fig.update_traces(hovertemplate='%{customdata[0]}<br>%{x}: %{y:.2f}%')
     fig.update_layout(title='Concerns about Vaccination', xaxis_title=None,yaxis_title='Percent', xaxis={'categoryorder':'total ascending'}, template='plotly_white',legend={'yanchor': 'top', 'y': 1.2},
-        margin={'b': 40, 't': 80})
+        margin={'b': 40, 't': 80, 'l': 40, 'r': 0})
     return fig
 
 @app.callback(
@@ -122,7 +122,8 @@ def update_graph(selected_vaccine, selected_demo, selected_month):
     )
     fig = px.density_heatmap(filtered_df, x='indicator_category', y='demo_category', z='estimate', category_orders={'indicator_category': x_order}, labels={'estimate':'Estimate (%)'}, color_continuous_scale=[(0, "#636EFA"), (1, "#EF553B")])
     fig.update_traces(hovertemplate='%{x}<br>Demographic: %{y}<br>Estimate: %{z}%<extra></extra>')
-    fig.update_layout(title='Demographic vs. Sentiment Heatmap', xaxis_title=None, yaxis_title=None, template='plotly_white', height=600)
+    fig.update_layout(title='Demographic vs. Sentiment Heatmap', xaxis_title=None, yaxis_title=None, xaxis=dict(tickfont=dict(size=11)), yaxis=dict(tickfont=dict(size=10)),
+                      margin=dict(l=0, r=0, t=80, b=0),template='plotly_white', height=600, coloraxis_colorbar=dict(thickness=10,tickfont=dict(size=10)))
     return fig
 
 @app.callback(
