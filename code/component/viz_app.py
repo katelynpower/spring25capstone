@@ -58,7 +58,7 @@ heatmap = dcc.Graph(id='heatmap')
 app.layout = html.Div([
     dbc.Row([page_title,selects,
         dbc.Row([dbc.Col([bargraph_motivators, bargraph_concerns], width=7), dbc.Col([heatmap], width=5)], style={'height': '700px'}),
-        dbc.Row([treemap])]),cite], style={'zoom':.75}
+        dbc.Row([treemap])]),cite], style={'transform': 'scale(0.75)','transformOrigin': 'top left',  'width': '133.33%', 'height': '133.33%'}
     )
 
 
